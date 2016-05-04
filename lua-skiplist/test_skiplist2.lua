@@ -71,7 +71,7 @@ for i = 1, 4 do
 	print(key, tls:getrank(key))
 end
 
--- local list,err = tls:getrangebyrank(nil, 10, 20)
+local list,err = tls:getrangebyrank(nil, 10, 20)
 --]]
 
 
