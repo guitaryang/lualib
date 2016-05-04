@@ -525,7 +525,6 @@ function lskiplist:getrangebyrank( list, startrank, endrank )
 	return list, true
 end
 
------------------------------------------------------------------------------
 return lskiplist
 
 
