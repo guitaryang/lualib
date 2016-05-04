@@ -38,7 +38,7 @@ local lskiplist = {}
 --[[ 这两行代码作用:
 -- 1. 此后再定义的全局变量会放到lskiplist中
 -- 2. 限制此后代码对全局成员(变量或函数)的访问
--- 3. 特性lua5.2以上版本才有效.
+-- 3. 此特性lua5.2以上版本才有效.
 -- ]]
 local env = _ENV
 local _ENV = lskiplist
