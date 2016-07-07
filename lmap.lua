@@ -1,3 +1,20 @@
+--[[=====================================================================================
+* 
+*    Filename:  lmap.lua
+* 
+*    Description: 
+* 
+*    Created:  2016年07月07日 20时44分41秒
+* 
+*    Author:  guitar <guitaryangw@gmail.com>
+*
+*    Company:  UNKNOW
+*
+*    All rights reserved.
+*    Use, modification and distribution are subject to the "MIT License"
+* 
+* 
+=====================================================================================--]]
 
 local lrbtree = require"lrbtree"
 

@@ -38,9 +38,12 @@
  * 
  *    Created:  2016年07月06日 18时45分57秒
  * 
- *    Author:  guitar 
+ *    Author:  guitar <guitaryangw@gmail.com>
  *
  *    Company:  UNKNOW
+ *
+ *    All rights reserved.
+ *    Use, modification and distribution are subject to the "MIT License"
  * 
  ===================================================================================== --]]
 

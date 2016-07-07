@@ -6,9 +6,13 @@
 * 
 *    Created:  2016年05月03日 19时42分06秒
 * 
-*    Author:  guitar 
+*    Author:  guitar <guitaryangw@gmail.com>
 *
 *    Company:  UNKNOW
+*
+*    All rights reserved.
+*    Use, modification and distribution are subject to the "MIT License"
+* 
 * 
 =====================================================================================--]]
 
