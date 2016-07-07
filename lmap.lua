@@ -56,8 +56,8 @@ end
 local meta = {
 	__index = index_func,
 	__newindex = newindex_func,
-	__pairs = pair_func,
-	__ipairs = pair_func, 
+	__pairs = pair_func, -- lua5.2以上版本支持
+	__ipairs = pair_func,  -- lua5.2以上版本支持
 }
 
 function lmap.new()
@@ -96,6 +96,7 @@ function lmap:count()
 	return self.container:count()
 end
 
+-- 遍历所有元素
 function lmap:pairs()
 	return pair_func(self)
 end
