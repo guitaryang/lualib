@@ -39,14 +39,6 @@ local SKIPLIST_P = 0.25      --[[ SkipList P = 1/4 增加层数的概率 ]]
 math.randomseed(os.time())
 
 local lskiplist = {}
---[[ 这两行代码作用:
--- 1. 此后再定义的全局变量会放到lskiplist中
--- 2. 限制此后代码对全局成员(变量或函数)的访问
--- 3. 此特性lua5.2以上版本才有效.
--- ]]
-local env = _ENV
-local _ENV = lskiplist
---]]
 
 --[[
 
@@ -257,7 +249,7 @@ local function _remove(self, keyinfo)
 		end
 	end
 
-	if not sl.tail == denl then
+	if sl.tail == deln then
 		sl.tail = x
 	end
 
@@ -326,6 +318,21 @@ local function _getnodebyrank( self, rank )
 		end
 	end
 	return nil
+end
+
+local function _iterator_node(self, func)
+	local sl = self.sl
+	local node = sl.header
+	for rank = 1, self.cur_num do
+		node = node.level[1]
+		if not node.forward then
+			break
+		end
+		node = node.forward
+		if not func(node.keyinfo, rank) then
+			break
+		end
+	end
 end
 ----------------------------------------------------------------------------------------------------------
 
@@ -479,6 +486,8 @@ function lskiplist:remove(key)
 	if old_keyinfo then
 		_remove(self, old_keyinfo)
 
+		self.data_tab[key] = nil
+
 		-- debug check
 		-- self:checkspanvalid()
 	end
@@ -494,6 +503,24 @@ function lskiplist:getrank(key)
 		return 0
 	end
 	return _getrank(self, keyinfo)
+end
+
+function lskiplist:get_count()
+	return self.cur_num
+end
+
+function lskiplist:get_first()
+	if self.cur_num <= 0 then
+		return nil
+	end
+	return self.sl.header.level[1].forward.keyinfo
+end
+
+function lskiplist:get_last()
+	if self.cur_num <= 0 then
+		return nil
+	end
+	return self.sl.tail.keyinfo
 end
 
 function lskiplist:getrangebyrank( list, startrank, endrank )
@@ -527,6 +554,11 @@ function lskiplist:getrangebyrank( list, startrank, endrank )
 		snode = snode.level[1].forward
 	end
 	return list, true
+end
+
+-- func(keyinfo, rank) end
+function lskiplist:iterate( func )
+	_iterator_node(self, func)
 end
 
 return lskiplist
